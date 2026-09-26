@@ -82,7 +82,7 @@ constexpr float kVenusOrbitRadius = 4.0f;    // entre o Sol e a Terra
 constexpr float kVenusScale = 0.75f;
 constexpr float kVenusAngularSpeed = 1.9f;   // rad/s (mais rapido que a Terra, mais perto do Sol)
 
-constexpr float kEarthOrbitRadius = 6.0f;
+constexpr float kEarthOrbitRadius = 8.0f;
 constexpr float kEarthScale = 0.9f;
 constexpr float kEarthOrbitAngularSpeed = 1.2f;  // rad/s (translacao em torno do Sol)
 constexpr float kEarthSpinAngularSpeed = 5.0f;   // rad/s (rotacao em torno do proprio eixo)
