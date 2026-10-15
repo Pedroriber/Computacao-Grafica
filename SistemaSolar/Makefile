@@ -27,8 +27,10 @@ LDFLAGS += -ld3d12 -ldxgi -ldxguid -luser32 -lgdi32 -lshell32 -lole32 -luuid -lw
 TARGET2 = t2
 TARGET3 = t3
 TARGET4 = solarsystem
+TARGET_CENA = cena3d_tarefa
+TARGET_SPOT = cena3d_spotlight
 
-all: $(TARGET2) $(TARGET3) $(TARGET4)
+all: $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET_CENA) $(TARGET_SPOT)
 
 CORE_SRC = \
   wgpucontext.cpp \
@@ -50,6 +52,7 @@ CORE_SRC = \
   light.cpp \
   pointlight.cpp \
   directionallight.cpp \
+  spotlight.cpp \
   material.cpp \
   colormaterial.cpp \
   phongmaterial.cpp \
@@ -98,6 +101,12 @@ main_2d.o: main_2d.cpp $(WGPU_STAMP)
 main_3d.o: main_3d.cpp $(WGPU_STAMP)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+cena3d_tarefa.o: cena3d_tarefa.cpp $(WGPU_STAMP)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+cena3d_spotlight.o: cena3d_spotlight.cpp $(WGPU_STAMP)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 solarsystem.o: solarsystem.cpp $(WGPU_STAMP)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
@@ -107,11 +116,17 @@ $(TARGET2): $(CORE_OBJ) main_2d.o Makefile
 $(TARGET3): $(CORE_OBJ) main_3d.o Makefile
 	$(CXX) -o $@ $(CORE_OBJ) main_3d.o $(LDFLAGS)
 
+$(TARGET_CENA): $(CORE_OBJ) cena3d_tarefa.o Makefile
+	$(CXX) -o $@ $(CORE_OBJ) cena3d_tarefa.o $(LDFLAGS)
+
+$(TARGET_SPOT): $(CORE_OBJ) cena3d_spotlight.o Makefile
+	$(CXX) -o $@ $(CORE_OBJ) cena3d_spotlight.o $(LDFLAGS)
+
 $(TARGET4): $(CORE_OBJ) solarsystem.o Makefile
 	$(CXX) -o $@ $(CORE_OBJ) solarsystem.o $(LDFLAGS)
 
 clean:
-	rm -f $(TARGET2) $(TARGET3) $(TARGET4) $(CORE_OBJ) $(LUXOR_OBJ) main_2d.o main_3d.o solarsystem.o
+	rm -f $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET_CENA) $(TARGET_SPOT) $(CORE_OBJ) $(LUXOR_OBJ) main_2d.o main_3d.o solarsystem.o cena3d_tarefa.o cena3d_spotlight.o glfw3webgpu.o
 
 deps: $(WGPU_STAMP)
 
