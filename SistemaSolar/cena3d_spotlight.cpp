@@ -93,7 +93,7 @@ static void initialize (void)
   // mesa e as pernas, entao o contorno do foco aparece sobre o tampo.
   SpotLightPtr light = SpotLight::Make(0.5f, 3.5f, 2.0f,
                                        -0.4f, -2.3f, -2.0f,
-                                       12.0f, 20.0f, "world");
+                                       12.0f, 100.0f, "world");
   // ambiente baixo de proposito: fora do cone a cena fica escura e o
   // contraste do spot aparece
   light->SetAmbient(0.12f, 0.12f, 0.12f);
