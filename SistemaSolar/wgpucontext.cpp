@@ -100,13 +100,13 @@ WgpuContext::~WgpuContext ()
   if (m_instance) wgpuInstanceRelease(m_instance);
 }
 
-void WgpuContext::Configure (int width, int height)
+void WgpuContext::Configure (int width, int height, bool vsync)
 {
   WGPUSurfaceConfiguration config = {};
   config.device = m_device;
   config.format = m_surfaceFormat;
   config.usage = WGPUTextureUsage_RenderAttachment;
-  config.presentMode = WGPUPresentMode_Fifo;
+  config.presentMode = vsync ? WGPUPresentMode_Fifo : WGPUPresentMode_Immediate;
   config.width = (uint32_t) width;
   config.height = (uint32_t) height;
   wgpuSurfaceConfigure(m_surface, &config);

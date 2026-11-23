@@ -31,8 +31,9 @@ TARGET_CENA = cena3d_tarefa
 TARGET_SPOT = cena3d_spotlight
 TARGET_PROJ2_1 = cena3d_1_proj2
 TARGET_PROJ2_2 = cena3d_2_proj2
+TARGET_PROJ3 = proj3
 
-all: $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET_CENA) $(TARGET_SPOT) $(TARGET_PROJ2_1) $(TARGET_PROJ2_2)
+all: $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET_CENA) $(TARGET_SPOT) $(TARGET_PROJ2_1) $(TARGET_PROJ2_2) $(TARGET_PROJ3)
 
 CORE_SRC = \
   wgpucontext.cpp \
@@ -136,11 +137,17 @@ $(TARGET_PROJ2_1): $(CORE_OBJ) cena3d_1_proj2.o Makefile
 $(TARGET_PROJ2_2): $(CORE_OBJ) cena3d_2_proj2.o Makefile
 	$(CXX) -o $@ $(CORE_OBJ) cena3d_2_proj2.o $(LDFLAGS)
 
+proj3.o: proj3.cpp $(WGPU_STAMP)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(TARGET_PROJ3): $(CORE_OBJ) $(LUXOR_OBJ) proj3.o Makefile
+	$(CXX) -o $@ $(CORE_OBJ) $(LUXOR_OBJ) proj3.o $(LDFLAGS)
+
 $(TARGET4): $(CORE_OBJ) solarsystem.o Makefile
 	$(CXX) -o $@ $(CORE_OBJ) solarsystem.o $(LDFLAGS)
 
 clean:
-	rm -f $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET_CENA) $(TARGET_SPOT) $(TARGET_PROJ2_1) $(TARGET_PROJ2_2) $(CORE_OBJ) $(LUXOR_OBJ) main_2d.o main_3d.o solarsystem.o cena3d_tarefa.o cena3d_spotlight.o cena3d_1_proj2.o cena3d_2_proj2.o glfw3webgpu.o
+	rm -f $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET_CENA) $(TARGET_SPOT) $(TARGET_PROJ2_1) $(TARGET_PROJ2_2) $(TARGET_PROJ3) $(CORE_OBJ) $(LUXOR_OBJ) main_2d.o main_3d.o solarsystem.o cena3d_tarefa.o cena3d_spotlight.o cena3d_1_proj2.o cena3d_2_proj2.o proj3.o glfw3webgpu.o
 
 deps: $(WGPU_STAMP)
 

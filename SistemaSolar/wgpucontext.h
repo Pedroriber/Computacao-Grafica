@@ -26,7 +26,7 @@ public:
   WGPUQueue GetQueue () const;
   WGPUSurface GetSurface () const;
   WGPUTextureFormat GetSurfaceFormat () const;
-  void Configure (int width, int height);
+  void Configure (int width, int height, bool vsync = false);
   WGPUSurfaceTexture GetCurrentTexture () const;
   void Present () const;
   void WaitFor (const std::function<bool()>& done) const;

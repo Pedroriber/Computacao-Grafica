@@ -4,15 +4,15 @@
 
 Luxor::Luxor (WGPUDevice device)
 {
-  MeshPtr base_a = Mesh::Make(device, "../../meshes/luxor/base_a.msh");
-  MeshPtr base_b = Mesh::Make(device, "../../meshes/luxor/base_b.msh");
-  MeshPtr haste1 = Mesh::Make(device, "../../meshes/luxor/haste1.msh");
-  MeshPtr haste2 = Mesh::Make(device, "../../meshes/luxor/haste2.msh");
-  MeshPtr haste3_a = Mesh::Make(device, "../../meshes/luxor/haste3_a.msh");
-  MeshPtr haste3_b = Mesh::Make(device, "../../meshes/luxor/haste3_b.msh");
-  MeshPtr cupula_a = Mesh::Make(device, "../../meshes/luxor/cupula_a.msh");
-  MeshPtr cupula_b = Mesh::Make(device, "../../meshes/luxor/cupula_b.msh");
-  MeshPtr lampada = Mesh::Make(device, "../../meshes/luxor/lampada.msh");
+  MeshPtr base_a = Mesh::Make(device, "../meshes/luxor/base_a.msh");
+  MeshPtr base_b = Mesh::Make(device, "../meshes/luxor/base_b.msh");
+  MeshPtr haste1 = Mesh::Make(device, "../meshes/luxor/haste1.msh");
+  MeshPtr haste2 = Mesh::Make(device, "../meshes/luxor/haste2.msh");
+  MeshPtr haste3_a = Mesh::Make(device, "../meshes/luxor/haste3_a.msh");
+  MeshPtr haste3_b = Mesh::Make(device, "../meshes/luxor/haste3_b.msh");
+  MeshPtr cupula_a = Mesh::Make(device, "../meshes/luxor/cupula_a.msh");
+  MeshPtr cupula_b = Mesh::Make(device, "../meshes/luxor/cupula_b.msh");
+  MeshPtr lampada = Mesh::Make(device, "../meshes/luxor/lampada.msh");
   m_red = PhongMaterial::Make(1.0f,0.0f,0.0f);
   m_white = PhongMaterial::Make(1.0f,1.0f,1.0f);
   TransformPtr trf_all = Transform::Make();
